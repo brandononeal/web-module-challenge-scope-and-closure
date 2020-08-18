@@ -76,14 +76,18 @@ finalScore(inning, 9) might return:
 */ 
 
 function finalScore(inning, numOfInnings){
-  let score = []
+  let home = 0
+  let away = 0
+  score = []
   for(let i=0;i<numOfInnings;i++){
-    score.push({'home': inning(), 'away': inning()})
+    home = inning() + home;
+    away = inning() + away;
   }
-  return score
+  return {'home': home, 'away': away}
 }
 
 console.log(finalScore(inning,9))
+
 
 /* Task 4: 
 
@@ -105,9 +109,12 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, numOfInnings) {
+  score = []
+  for(let i=0;i<numOfInnings;i++){
+    score.push({'home': inning(),'away': inning()})
+  }
+  return score
 }
 
-
+console.log(scoreboard(inning,9))
