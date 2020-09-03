@@ -27,11 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *    counter1 uses function scope to reference count while counter2 uses global scope
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *    counter1; function counter is nested within function counterMaker
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *    counter1 would be preferable in most situations; since counter2 is globally scoped you want that format only when necessary
 */
 
 // counter1 code
@@ -56,11 +56,10 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * 3)
 }
+
 
 /* Task 3: finalScore()
 
@@ -76,11 +75,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, numOfInnings){
+  let home = 0
+  let away = 0
+  score = []
+  for(let i=0;i<numOfInnings;i++){
+    home = inning() + home;
+    away = inning() + away;
+  }
+  return {'home': home, 'away': away}
 }
+
+console.log(finalScore(inning,9))
+
 
 /* Task 4: 
 
@@ -102,9 +109,24 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, numOfInnings, finalScore){
+  home = 0
+  away = 0
+  for(let i=1;i<=numOfInnings;i++){
+    // score.push({'home': inning(),'away': inning()})
+    home = finalScore(inning,i).home
+    away = finalScore(inning,i).away
+    if(i === 1){
+      console.log(`${i}st inning: Home ${home} - Away ${away}`)
+    }else if(i === 2){
+      console.log(`${i}nd inning: Home ${home} - Away ${away}`)
+    }else if(i === 3){
+      console.log(`${i}rd inning: Home ${home} - Away ${away}`)
+    }else{
+      console.log(`${i}th inning: Home ${home} - Away ${away}`)
+    }
+  }
+  return `Final Score: Home ${home} - Away ${away}`
 }
 
-
+console.log(scoreboard(inning,9,finalScore))

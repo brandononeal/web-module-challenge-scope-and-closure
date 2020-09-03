@@ -42,6 +42,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+    Closure is when you have functions within functions that reference each other
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +64,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+    Since personalDice is a function and there is another function within personalDice, closure is being used
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+    It will always output "Dan" as the name, but will have a different random number for each roll
+c. What is the lexical scope of `newRoll`?
+    Function scope
 
 ### Task 2c - Exit Ticket
 
